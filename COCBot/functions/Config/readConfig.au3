@@ -83,9 +83,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		$MinDark = IniRead($config, "search", "searchDark", "0")
 		$MinTrophy = IniRead($config, "search", "searchTrophy", "0")
 		$icmbTH = IniRead($config, "search", "THLevel", "0")
-		
-		;Use selected troops
-		$icmbSelectTroop = IniRead($config, "attack", "SelectTroop", "8")
 
 		$AlertSearch = IniRead($config, "search", "AlertSearch", "0")
 
@@ -298,7 +295,6 @@ Func readConfig() ;Reads config and sets it to the variables
 		Next
 
 		$fulltroop = IniRead($config, "troop", "fullTroop", "100")
-		$isldTrainITDelay = IniRead($config, "troop", "TrainITDelay", "20")
 		;barracks boost not saved (no use)
 ; labo
 ;Laboratory

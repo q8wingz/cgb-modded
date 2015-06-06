@@ -2,9 +2,6 @@ Mods Integrated to default CBG v3.1.6:
 
 Changelog:
 
-UPDATED 30.05.2015
-- Added Use Only Selected Troops Mod (https://gamebot.org/forums/thread-3542.html)
-
 UPDATED 24.05.2015
 
 - Merged to CGB v3.1.6

@@ -24,11 +24,11 @@ Func TrainIt($troopKind, $howMuch = 1, $iSleep = 400)
    _CaptureRegion()
    Local $pos = GetTrainPos($troopKind)
    If IsArray($pos) Then
-	  If CheckPixel($pos) Then
-		 ClickP($pos, $howMuch, $isldTrainITDelay)
+	  ;If CheckPixel($pos) Then
+		 ClickP($pos, $howMuch, 20)
 		 ;if _Sleep($iSleep) Then Return False
 		 ;Return True
-	  EndIf
+	  ;EndIf
    EndIf
 EndFunc
 
@@ -248,7 +248,6 @@ Func Train()
 			if $FirstStart then
 				$icount = 0
 				while not _ColorCheck(_GetPixelColor(496, 197, True), Hex(0xE0E4D0, 6), 20)
-				    ; Delete your build queue from your barracks when you push Stop and then Start button again
 				    Click(496, 197, 10)
 					$icount += 1
 					if $icount = 20 then ExitLoop
@@ -359,7 +358,7 @@ Func Train()
 					endif
 				endif
 			next
-
+			
 			$troopNameCooking = ""
 			for $i=0 to Ubound($TroopName) - 1
 			   if eval("troopSecond" & $TroopName[$i]) > eval("troopFirst" & $TroopName[$i]) and GUICtrlRead(eval("txtNum" & $TroopName[$i])) <> "0" then
@@ -372,7 +371,7 @@ Func Train()
 			next
 
 			;if  _ColorCheck(_GetPixelColor(496, 197, True), Hex(0xE0E4D0, 6), 20) then
-			if  _ColorCheck(_GetPixelColor(496, 197, True), Hex(0xE0E4D0, 6), 20) or $troopNameCooking = "" then
+			if  _ColorCheck(_GetPixelColor(496, 197, True), Hex(0xE0E4D0, 6), 20) or $troopNameCooking = "" then 
 				$BarrackStatus[$brrNum-1] = false
 			else
 				$BarrackStatus[$brrNum-1] = true
@@ -407,7 +406,7 @@ Func Train()
 		wend
 
  EndIf
-
+ 
  ;dark here
 
 	If $isDarkBuild Then
@@ -548,30 +547,15 @@ Func Train()
 			If $iBarrHere = 7 then ExitLoop
 	  wend
 
-		if isSpellFactory() then
-			SetLog("Create Lightning Spell", $COLOR_BLUE)
-			Local $x = 0
-			While 1
-				_CaptureRegion()
-				If _sleep(500) Then Return
-				If  _ColorCheck(_GetPixelColor(237, 354, True), Hex(0xFFFFFF, 6), 20) = False Then
-					setlog("Not enough Elixir to create Spell", $COLOR_RED)
-					ExitLoop
-				Elseif  _ColorCheck(_GetPixelColor(200, 346, True), Hex(0x1A1A1A, 6), 20) Then
-					setlog("Spell Factory Full", $COLOR_RED)
-					ExitLoop
-				Else
-					Click(252, 354, 1, 20)
-					$x = $x + 1
-				EndIf
-				If $x = 5 Then
-					ExitLoop
-				EndIf
-			WEnd
-			If $x = 0 then
-				else
-					SetLog("Created " & $x &" Lightning Spell(s)", $COLOR_BLUE)
-			Endif
+	if isSpellFactory() then
+		SetLog("Create Lightning Spell", $COLOR_BLUE)
+		If  _ColorCheck(_GetPixelColor(237, 354, True), Hex(0xFFFFFF, 6), 20) = False Then
+			setlog("Not enough Elixir to create Spell", $COLOR_RED)
+		Elseif  _ColorCheck(_GetPixelColor(200, 346, True), Hex(0x1A1A1A, 6), 20) Then
+			setlog("Spell Factory Full", $COLOR_RED)
+		Else
+			Click(252,354,5,20)
+		EndIf
 	else
 		SetLog("Spell Factory not found...", $COLOR_BLUE)
 	endif

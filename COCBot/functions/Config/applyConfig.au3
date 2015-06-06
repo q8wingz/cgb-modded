@@ -122,10 +122,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	Else
 		GUICtrlSetState($chkAlertSearch, $GUI_UNCHECKED)
 	EndIf
-	
-	;Use only selected troops
-	_GUICtrlComboBox_SetCurSel($cmbSelectTroop, $icmbSelectTroop)
-	
+
 	;Attack Settings-------------------------------------------------------------------------
 	_GUICtrlComboBox_SetCurSel($cmbDeploy, $deploySettings)
 	_GUICtrlComboBox_SetCurSel($cmbTroopComp, $icmbTroopComp)
@@ -614,9 +611,6 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	_GUICtrlComboBox_SetCurSel($cmbBarrack4, $barrackTroop[3])
 
 	GUICtrlSetData($txtFullTroop, $fulltroop)
-	
-	GUICtrlSetData($sldTrainITDelay, $isldTrainITDelay)
-	GUICtrlSetData($lbltxtTrainITDelay, "delay " & $isldTrainITDelay & " ms.")
 	;barracks boost not saved (no use)
 
 

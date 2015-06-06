@@ -75,8 +75,6 @@ Global $PushToken = ""
 Global $DontTouchMe=False
 Global $IAmSelfish=False
 
-Global $isldTrainITDelay
-
 ;PushBullet---------------------------------------------------------------
 Global $PBRemoteControlInterval = 30000
 GLOBAL $iOrigPushB
@@ -174,8 +172,6 @@ Global $WallX = 0, $WallY = 0, $WallLoc = 0
 Global $Wallv[8]
 Global $wallh[8]
 Global $Wall[8]
-;Use selected troops
-Global $icmbSelectTroop
 
 ;Attack Settings
 Global $TopLeft[5][2] = [[79, 281], [170, 205], [234, 162], [296, 115], [368, 66]]
@@ -200,9 +196,9 @@ Global $checkQPower = False ; Check for Queen activate power
 Global $iActivateKQCondition
 Global $delayActivateKQ ; = 9000 ;Delay before activating KQ
 Global $checkUseClanCastle ; Use Clan Castle settings
-Global $checkUseClanCastleBalanced = 0 ; Use Clan Castle Balanced settings
-Global $ratioNumeratorDonated = 1 ; Use Clan Castle Balanced ratio settings
-Global $ratioDenominatorReceived = 1 ; Use Clan Castle Balanced ratio settings
+Global $checkUseClanCastleBalanced ; Use Clan Castle Balanced settings
+Global $ratioNumeratorDonated ; Use Clan Castle Balanced ratio settings
+Global $ratioDenominatorReceived ; Use Clan Castle Balanced ratio settings
 Global $iradAttackMode ;Attack mode, 0 1 2
 Global $iradAttackModeString
 Global $THLoc
@@ -343,7 +339,7 @@ Global $iWBMortar
 Global $iWBWizTower
 Global $iWBXbow
 Global $TroopGroup[10][4] = [["Pekk",9,25,-1],["Drag",8,20,-1],["Heal",7,14,-1],["Wiza",6,4,-1],["Ball",5,5,-1],["Wall",4,2,-1],["Giant",2,5,-1],["Gobl",3,1,-1],["Arch",1,1,9],["Barb",0,1,8]]
-Global $THSnipeTroopGroup[10][4] = [["Arch",1,1,-1],["Giant",2,5,-1],["Barb",0,1,-1],["Heal",7,14,-1],["Wiza",6,4,-1],["Drag",8,20,-1],["Pekk",9,25,-1],["Gobl",3,1,-1],["Wall",4,2,-1],["Ball",5,5,-1]]
+Global $THSnipeTroopGroup[10][4] = [["Arch",1,1,2],["Giant",2,5,-1],["Barb",0,1,0],["Heal",7,14,-1],["Wiza",6,4,-1],["Drag",8,20,-1],["Pekk",9,25,-1],["Gobl",3,1,-1],["Wall",4,2,-1],["Ball",5,5,-1]]
 Global $TroopName[Ubound($TroopGroup,1)]
 Global $TroopNamePosition[Ubound($TroopGroup,1)]
 Global $TroopHeight[Ubound($TroopGroup,1)]

@@ -403,7 +403,7 @@ $tabAttack = GUICtrlCreateTabItem("Attack")
 	$grpDeploy = GUICtrlCreateGroup("Deploy", $x - 20, $y - 20, 450, 75)
 		$y -= 5
 		$lblDeploy = GUICtrlCreateLabel("Attack on:", $x + 20, $y + 5, -1, -1)
-		$cmbDeploy = GUICtrlCreateCombo("", $x + 75, $y, 240, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		$cmbDeploy = GUICtrlCreateCombo("", $x + 75, $y, 270, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, "Attack on a single side, penetrates through base" & @CRLF & "Attack on two sides, penetrates through base" & @CRLF & "Attack on three sides, gets outer and some inside of base" & @CRLF & "Attack on all sides equally, gets most of outer base", "Select the No. of sides to attack on.")
 			GUICtrlSetData(-1, "one side, penetrates through base|two sides, penetrates through base|three sides, gets outer and some inside of base|all sides equally, gets most of outer base", "all sides equally, gets most of outer base")
 		$y += 25
@@ -421,10 +421,6 @@ $tabAttack = GUICtrlCreateTabItem("Attack")
 		$Randomspeedatk = GUICtrlCreateCheckbox("Random", $x + 250, $y, -1, -1)
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "Randomspeedatk")
-		$lblSelectTroop=GUICtrlCreateLabel("Use Troops :",$x+325,$y-25,-1,-1)
-		$cmbSelectTroop=GUICtrlCreateCombo("",$x+325,$y-5,100,-1)
-			GUICtrlSetData(-1, "Barb Only|Arch Only|B+A|B+Gob|A+Gob|B+A+Gi|B+A+Gob+Gi|Use Barracks|Use All", "Use All")
-			GUICtrlSetData($icmbSelectTroop,$cmbSelectTroop)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$y = 210
@@ -486,13 +482,12 @@ $tabAttack = GUICtrlCreateTabItem("Attack")
 	$grpClanCastle = GUICtrlCreateGroup("Clan Castle", $x + 290, $y - 20, 140, 90)
 		GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 9, $x + 300, $y + 10, 32, 32)
 		$chkUseClanCastle = GUICtrlCreateCheckbox("Drop in Battle", $x + 335, $y - 2, -1, -1)
-			GUICtrlSetState(-1, $GUI_UNCHECKED)
+			GUICtrlSetState(-1, $GUI_CHECKED)
 			GUICtrlSetTip(-1, "Drop your Clan Castle in battle if it contains troops.")
 			GUICtrlSetOnEvent(-1, "chkDropInBattle")
 		GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 9, $x + 300, $y + 10, 32, 32)
 		$chkUseClanCastleBalanced = GUICtrlCreateCheckbox("Balance D/R", $x + 335, $y + 18, -1, -1)
-			GUICtrlSetState(-1, $GUI_UNCHECKED)
-			GUICtrlSetState(-1, $GUI_DISABLE)
+			GUICtrlSetState(-1, $GUI_CHECKED)
 			GUICtrlSetTip(-1, "Drop your Clan Castle only if your donated/received ratio is greater than D/R ratio below.")
 			GUICtrlSetOnEvent(-1, "chkBalanceDR")
 	   $cmbRatioNumeratorDonated = GUICtrlCreateCombo("",  $x + 335, $y + 40, 35, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
@@ -1512,7 +1507,7 @@ $tabTroops = GUICtrlCreateTabItem("Troops")
 
 	$x +=  227
 	$y = 310
-	$grpDarkTroops = GUICtrlCreateGroup("Add. Dark Troops", $x - 20, $y - 20, 223, 170)
+	$grpDarkTroops = GUICtrlCreateGroup("Add. Dark Troops", $x - 20, $y - 20, 223, 195)
 		GUICtrlCreateIcon ($LibDir & "\CGBBOT.dll", 37, $x - 5, $y - 5, 24, 24)
 		$lblMinion = GUICtrlCreateLabel("No. of Minions:", $x + 25, $y, -1, -1)
 		$txtNumMini = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
@@ -1548,17 +1543,6 @@ $tabTroops = GUICtrlCreateTabItem("Troops")
 		$txtNumLava = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, "Enter the No. of Lava Hounds to make.")
 			GUICtrlSetLimit(-1, 2)
-		$y +=25
-		$lbltxtTrainITDelay = GUICtrlCreateLabel("delay", $x - 5, $y,100, -1)
-			GUICtrlSetTip(-1, "Lower PC increase delay between train each troop")
-		$sldTrainITDelay = GUICtrlCreateSlider($x + 62, $y , 130, 25, BITOR($TBS_TOOLTIPS, $TBS_AUTOTICKS)) ;,
-			GUICtrlSetTip(-1, "Lower PC increase delay between train each troop")
-			GUICtrlSetBkColor(-1, $COLOR_WHITE)
-			_GUICtrlSlider_SetTipSide(-1, $TBTS_BOTTOM)
-			_GUICtrlSlider_SetTicFreq(-100, 100)
-			GUICtrlSetLimit(-1,500, 20) ; change max/min value
-			GUICtrlSetData(-1, 20) ; default value
-			GUICtrlSetOnEvent(-1, "sldTrainITDelay")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
 
@@ -2234,7 +2218,7 @@ Local $x = 30, $y = 130
 	$grpModCredits = GUICtrlCreateGroup("Mod Credits", $x - 20, $y - 20, 450, 85)
 		$lblModCredits = GUICtrlCreateLabel("Credits go to the following modders:", $x - 5, $y - 5, 400, 20)
 			GUICtrlSetFont(-1, 8.5, $FW_BOLD)
-		$txtModCredits =	"ChiefM3, Sm0kE, lekter, kgns, barracoda, janikz211, bunana123, Jame, papaismurf, indy, sabrewulf86, Jgrt123, summoner, Boju, Shark, Cocmady, coldfire2k, cmestres, rcorts, CrazyHeo, outcry666"
+		$txtModCredits =	"ChiefM3, Sm0kE, lekter, kgns, barracoda, janikz211, bunana123, Jame, papaismurf, indy, sabrewulf86, Jgrt123, summoner, Boju, Shark, Cocmady, coldfire2k, cmestres, rcorts"
 		$lbltxtModCredits = GUICtrlCreateEdit($txtModCredits, $x - 5, $y + 10, 434, 39, BITOR($WS_VISIBLE, $ES_AUTOVSCROLL, $ES_READONLY, $SS_LEFT),0)
 			GUICtrlSetBkColor(-1, $COLOR_WHITE)
 		$labelModForumURL = GUICtrlCreateLabel("https://GameBot.org/forums/thread-2682.html", $x - 5, $y + 50, 450, 20)
