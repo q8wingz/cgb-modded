@@ -115,7 +115,9 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "search", "AlertSearch", 0)
 	 EndIf
-
+	 
+	;Use only selected troops
+	IniWrite($config, "attack", "SelectTroop", _GUICtrlComboBox_GetCurSel($cmbSelectTroop))
 
 	;Attack Basic Settings-------------------------------------------------------------------------
 	IniWrite($config, "attack", "deploy", _GUICtrlComboBox_GetCurSel($cmbDeploy))
@@ -573,6 +575,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "troop", "troop4", _GUICtrlComboBox_GetCurSel($cmbBarrack4))
 
 	IniWrite($config, "troop", "fulltroop", GUICtrlRead($txtFullTroop))
+	IniWrite($config, "troop", "TrainITDelay", GUICtrlRead($sldTrainITDelay))
 	;barracks boost not saved (no use)
 
 	;========================== laboratory ===========================
